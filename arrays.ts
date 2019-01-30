@@ -3,6 +3,11 @@
 // Merge array, if the id is the same
 
 
+import {current} from "../../../$RECYCLE.BIN/S-1-5-21-593699164-1228343305-1847928074-3136289/$RJ9BZLH/codelyzer/util/syntaxKind";
+// https://learn.javascript.ru/array-iteration
+// https://stackoverflow.com/questions/39885893/how-to-find-duplicate-values-in-a-javascript-array-of-objects-and-output-only-u
+//     https://learn.javascript.ru/array-methods
+
 const arr1 = [
     {id:1},
     {id:2},
@@ -50,7 +55,7 @@ function margeArrays (arr1, arr2){
     if (first<second){
         n = second;
     }
-    console.log('n value - '+n);
+    //console.log('n value - '+n);
 
 
     // let joingArr1 = arr1.join(';');
@@ -62,17 +67,39 @@ function margeArrays (arr1, arr2){
     // console.log(keys1);
     // console.log(keys2);
 
-    // let arr = [arr1, ...arr2];
+     let arr = [...arr1, ...arr2];
+     let arrForindex = [];
+   arr.reduce(function(sum, current) {
+        if (sum.id==current.id){
+          arrForindex.push(arr.indexOf(current));
+        }
+   },arr[0].id);
+
+//arr.reduce((x, y) => x.includes(y) ? x : [...x, y], [])
+
+
+
+    // var obj = {};
+    //
+    // for (let i = 0; i < arr.length; i++) {
+    //     var str = arr[i];
+    //     obj[str] = true; // запомнить строку в виде свойства объекта
+    // }
+    // let keys1 = Object.keys(obj);
+    // console.log(keys1);
+
+
 
      // for (let i=0; i<n; i++) {
-     //     if (arr1[i].id !== arr2[i].id) {
+     //    if (arr1[i].id !== arr2[i].id) {
      //         arr1.id = arr2[i].id;
      //     }
      // }
-
-         for (let d = 0; d <= 10; d++) {
-             console.log(arr1[d]);
-         }
+    // let keys1 = Object.keys(arr);
+    //      for (let d = 0; d <= 10; d++) {
+    //          console.log(arr[d]);
+    //      }
+    // console.log(keys1);
          // for (let i=0; i<first; i++){
          //     arrayPropNames1.push(Object.keys(arr1[i]));
          // }
@@ -118,9 +145,9 @@ function margeArrays (arr1, arr2){
          //     }
          // }
 
-         // for (let d=0;d<=n;d++){
-         //     console.log(arr1[d]);
-         // }
+         for (let d=0;d<arr.length;d++){
+             console.log(arrForindex[d]);
+         }
 
 };
 
